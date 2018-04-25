@@ -12,7 +12,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start|top"
+        android:scaleType="center"
+        app:rippleColor="#FFFFFFFF"
+        app:backgroundTint="#FFFFFFFF"
+        />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/forward_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/back_button"
+        android:layout_gravity="top"
+        android:layout_marginLeft="25dp"
+        android:scaleType="center"
+        app:rippleColor="#FFFFFFFF"
+        app:backgroundTint="#FFFFFFFF"
         />
 
     <WebView

@@ -3,11 +3,13 @@ package univr.intcatchboatusermanual;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.support.design.widget.FloatingActionButton;
 
 public class HTMLViewerActivity extends Activity
@@ -27,7 +29,13 @@ public class HTMLViewerActivity extends Activity
 				}
 
 				final WebView web_view = (WebView) findViewById(R.id.web_view);
+
 				FloatingActionButton back_button = (FloatingActionButton) findViewById(R.id.back_button);
+				FloatingActionButton forward_buttton = (FloatingActionButton) findViewById(R.id.forward_button);
+
+				back_button.setImageResource(R.drawable.back_arrow);
+				forward_buttton.setImageResource(R.drawable.forward_arrow);
+
 				back_button.setOnClickListener(new View.OnClickListener()
 				{
 						@Override
@@ -36,6 +44,17 @@ public class HTMLViewerActivity extends Activity
 								if (web_view.canGoBack())
 								{
 										web_view.goBack();
+								}
+						}
+				});
+				forward_buttton.setOnClickListener(new View.OnClickListener()
+				{
+						@Override
+						public void onClick(View view)
+						{
+								if (web_view.canGoForward())
+								{
+										web_view.goForward();
 								}
 						}
 				});
@@ -56,7 +75,9 @@ public class HTMLViewerActivity extends Activity
 				// TODO: if index file does exist, just display it
 
 
-				// TODO: either open in chrome or add a back and forward button to the webview
+				// TODO: forward button?
+				// TODO: home button?
+				// TODO: pulldown menu for sections and get rid of the left column in the HTML?
 
 		}
 }
