@@ -4,8 +4,11 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.support.design.widget.FloatingActionButton;
 
 public class HTMLViewerActivity extends Activity
 {
@@ -23,7 +26,21 @@ public class HTMLViewerActivity extends Activity
 						requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_EXTERNAL_STORAGE);
 				}
 
-				WebView web_view = (WebView) findViewById(R.id.web_view);
+				final WebView web_view = (WebView) findViewById(R.id.web_view);
+				FloatingActionButton back_button = (FloatingActionButton) findViewById(R.id.back_button);
+				back_button.setOnClickListener(new View.OnClickListener()
+				{
+						@Override
+						public void onClick(View view)
+						{
+								if (web_view.canGoBack())
+								{
+										web_view.goBack();
+								}
+						}
+				});
+
+
 				web_view.getSettings().setJavaScriptEnabled(true);
 				web_view.setWebViewClient(new WebViewClient() {
 						@Override public boolean shouldOverrideUrlLoading(WebView webView, String url) { webView.loadUrl(url); return true; }
@@ -37,7 +54,7 @@ public class HTMLViewerActivity extends Activity
 				// TODO: if index file does not exist, automatically download and unzip the file, then display index
 				// TODO: if possible, show some kind of progress bar or something
 				// TODO: if index file does exist, just display it
-				
+
 
 				// TODO: either open in chrome or add a back and forward button to the webview
 
